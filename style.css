@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: "Poppins";
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: whitesmoke;
+    --bg-main-profile: #f0f0f0;
+    --btn-color: black;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    padding: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+main,
+.web-section {
+    background-color: white;
+    height: 97vh;
+    border: 2px solid;
+}
+
+main {
+    box-shadow: 2px 3px 2px;
+    border-radius: 20px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+main .profile {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+main .profile-pic {
+    background-color: red;
+    border: 2px double black;
+    border-radius: 20%;
+    height: 150px;
+    width: 150px;
+}
+
+main .resume-btn {
+    background-color: black;
+    color: whitesmoke;
+    width: 150px;
+    border: none;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: large;
+    font-weight: bold;
+    transition: transform 0.1s ease-out;
+}
+
+main .resume-btn:hover {
+    background-color: whitesmoke;
+    color: black;
+    transform: scale(1.02);
+    outline: 2px solid black;
+}
+
+/* Address Tag */
+main address {
+    border-radius: 20px;
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main address .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+main address .contact-item a {
+    text-decoration: none;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+main address .contact-item a .bx {
+    font-size: 18px;
+    padding: 10px;
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 20%;
+}
+
+main address .contact-item a span {
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Arial';
+}
+
+main address .contact-item a span:hover {
+    color: blue;
+}
+
+
+main address .social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
+
+main address .social-media a {
+    font-size: 3rem;
+    color: black;
+}
+
+
+.web-section {
+    overflow-y: auto;
+    border-top: 0;
+    border-radius: 20px;
+    width: 75%;
+    position: relative;
+}
+
+.web-section header {
+    position: sticky; /* stays in place while scrolling */
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    height: 60px;
+    background-color: whitesmoke; 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.web-section header .page-title {
+    position: absolute;
+    top: 7px;
+    left: 30px;
+    font-size: 2rem;
+}
+
+.web-section header .navbar {
+    position: absolute;
+    right: 0;
+    height: 60px;
+    width: 600px;
+    border: 2px solid;
+    border-right: none;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2px;
+    align-items: center;
+    position: relative;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.nav-links a.active {
+    color: whitesmoke;
+}
+
+.indicator {
+    background-color: black;
+    position: absolute;
+    left: 0;
+    height: 55px;
+    border-radius: 100px 120px 0 0 / 100px 100px 0 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+}
+
+/* FIX — push sections below header */
+.page-section {
+    background-color: lightskyblue;
+    min-height: calc(97vh - 60px);
+    width: 100%;
+    scroll-margin-top: 70px;
+    /* padding-top: 60px; same as header height */
+}
