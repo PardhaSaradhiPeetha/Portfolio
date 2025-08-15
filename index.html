@@ -21,7 +21,7 @@
             <img src="" class="profile-pic" />
             <h2>Pardha Saradhi</h2>
             <h3>Web Developer</h3>
-            <button type="button" class="resume-btn">Resume</button>
+            <button type="button" class="resume-btn" onclick="window.location.href ='./resume.html'">Resume</button>
         </div>
         <address>
             <div class="contact-item">
@@ -36,21 +36,20 @@
                 <a href="https://www.instagram.com/_pardhasaradhi__/" target="_blank"><i
                         class='bx bxl-instagram'></i></a>
             </div>
-            <p class="copy-right" style="font-size: 10px;">&copy; <span id="current-year"></span> PardhaSaradhi|All
-                Rights
-                Reserved</p>
+            <p class="copy-right" style="font-size: 10px;">&copy; <span id="current-year"></span> PardhaSaradhi | All
+                Rights Reserved</p>
     </main>
     <section class="web-section">
         <header>
             <!-- Dynamically change -->
-            <h1 class="page-title">Pardha Saradhi</h1>
+            <h1 class="page-title" id="page-title">Pardha Saradhi</h1>
             <nav class="navbar">
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -59,40 +58,89 @@
             Home
         </section>
         <section class="pages" id="about">
-            About
+            <!-- About -->
+            <img src="" alt="Profile Picture" class="profile-pic2" />
+            <div class="about-right-box">
+                <div class="about-info">
+                    <div class="info-item">
+                        <i class='bx bxs-star'></i>
+                        <h1>Experience</h1>
+                        <p>1 year</p>
+                        <p>Web Developer</p>
+                    </div>
+                    <div class="info-item">
+                        <i class='bx bxs-graduation'></i>
+                        <h1>Education</h1>
+                        <p>
+                            B.tech in<br />
+                            Computer Science & Engineering
+                        </p>
+                        <p>--</p>
+                    </div>
+                </div>
+
+                <p class="about-paragraph">
+                    Motivated Computer Science B.Tech student with a strong foundation in C, Java, Python, and
+                    web technologies
+                    (HTML,
+                    CSS, JavaScript). Skilled in developing responsive web applications through academic
+                    projects, emphasizing
+                    usability
+                    and functionality. Eager to apply problem-solving abilities and technical knowledge to
+                    contribute to
+                    innovative software
+                    solutions in a collaborative team environment.
+                </p>
+            </div>
         </section>
         <section class="pages" id="skills">
             Skills
         </section>
         <section class="pages" id="projects">
-            Projects
+            <h1>Checkout my work:</h1>
+            <div class="cards-container">
+                <!-- Dynamic Cards -->
+                <div class="card">
+                    <img src="" alt="project" id="project-img">
+                    <h2 id="title">Title</h2>
+                    <p class="description">kjffhmfmdfksndfmf</p>
+                    <button class="project-git-btn" onclick="window.location.href='#'">
+                        <p>GitHub</p><i class='bx bxs-chevron-right'></i>
+                    </button>
+                </div>
+            </div>
         </section>
-        <section class="pages " id="certificates">
+        <section class="pages " id="certifications">
             Certificates
         </section>
         <section class="pages" id="contact">
             <div class="page-header">
                 <p class="text">Get in touch</p>
-                <h1 class="heading">Contact Us</h1>
+                <h1 class="heading">Contact Me</h1>
+                <p class="headline">
+                    Let's connect and explore opportunities. Reach out to discuss collaborations or projects
+                </p>
             </div>
-
-            <p class="headline">
-                Let's connect and explore opportunities. Reach out to discuss collaborations or projects
-            </p>
 
             <form action="#message-url" class="contact-form">
                 <div class="container">
                     <div class="inputs">
-                        <p><i class='bx bxs-user'></i> <input type="text" placeholder="Username" /></p>
-                        <p><i class='bx bxs-envelope'></i><input type="email" placeholder="Email"></p>
-                        <p><i class='bx bxs-map'></i><input type="text" placeholder="Country"></p>
-                        <p><i class='bx bxs-phone'></i><input type="text" placeholder="Number"></p>
+                        <p><i class='bx bxs-user'></i> <input type="text" placeholder="Username" id="username" /></p>
+                        <p><i class='bx bxs-envelope'></i><input type="email" placeholder="Email" id="useremail"></p>
+                        <p><i class='bx bxs-map'></i>
+                            <select id="selectCountry">
+                                <option value="">Select a Country</option>
+                            </select>
+                        </p>
+                        <p><i class='bx bxs-phone'></i><input type="text" placeholder="Mobile Number" id="userphno"></p>
                     </div>
-                    <textarea id="feedback" placeholder="Your message..."></textarea>
+                    <textarea placeholder="Your message..." id="usermessage"></textarea>
                 </div>
-                <div class="form-actions">
-                    <button type="submit">Send</button>
+                <div>
+                <button type="button" id="send-btn" onclick='validation()'>Send</button>
+                <button type="reset" id="reset-btn">Reset</button>
                 </div>
+                <p id="formmsg"></p>
             </form>
 
             <footer>

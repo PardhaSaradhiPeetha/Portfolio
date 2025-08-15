@@ -1,0 +1,113 @@
+/* Resume Page */
+.resume-body {
+  background-color: whitesmoke;
+}
+
+.resume-body::-webkit-scrollbar {
+  display: none;
+}
+
+.resume-download-btn {
+  color: black;
+  font-size: 22px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  padding: 10px 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.resume-download-btn:hover {
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+  transform: scale(1.1);
+}
+
+iframe {
+  border: 5px solid rgb(131, 124, 124);
+  width: 100%;
+  height: 100vh;
+}
+
+/* Feedback Form */
+#feedback-box {
+  backdrop-filter: blur(2px);
+  display: none;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.form-off {
+  border: none;
+  height: 40px;
+  width: 45px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 11;
+}
+
+.form-off:hover {
+  background-color: rgb(254, 85, 85);
+  color: white;
+}
+
+.feedback-form {
+  position: relative;
+  background-color: rgb(217, 212, 210);
+  border-radius: 10px;
+  margin: 3rem auto;
+  padding: 50px;
+  height: 500px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#user-name,
+#user-feedback {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#user-feedback {
+  height: 400px;
+  resize: none;
+  overflow-y: auto;
+}
+
+#form-result {
+  font-size: 20px;
+  background-color: red;
+  bottom: 20px;
+}
+
+#form-btn {
+  background-color: green;
+  color: white;
+  width: 100px;
+  font-size: large;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 35%;
+}
+
+#form-btn:hover {
+  background-color: darkgreen;
+}
+
+#feedback-box.displayform {
+  display: block;
+}
