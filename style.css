@@ -130,7 +130,7 @@ address {
     gap: 5px;
 }
 
-.contact-item a {
+.contact-item a,.mylocation {
     background-color: var(--bg-main-profile);
     padding: 10px;
     border-radius: 20px;
@@ -139,14 +139,14 @@ address {
     gap: 5px;
 }
 
-.contact-item a .bx {
+.contact-item a .bx,.mylocation .bx {
     font-size: 18px;
     padding: 10px;
     background-color: var(--bg-color);
     border-radius: 20%;
 }
 
-.contact-item a span {
+.contact-item a span,.mylocation span {
     font-size: 13px;
     font-weight: bold;
     font-family: Arial, sans-serif;
@@ -429,16 +429,26 @@ textarea {
 }
 
 #formmsg{
-    text-align: justify;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 40px;
 }
 
 /* Footer */
 footer {
+    position: absolute;
+    bottom: 10px;
     font-size: 12px;
     text-align: center;
 }
 
 footer a {
-    margin-left: 5px;
+    font-weight: bold;
+    color: indigo;
     text-decoration: underline;
+}
+footer a:hover{
+    color: blue;
+    background-color: whitesmoke;
 }

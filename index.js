@@ -1,3 +1,5 @@
+import { submitDataToSheet } from "./userdatasheet.js";
+
 function showPage(targetId) {
   const pages = document.querySelectorAll('.pages');
   const links = document.querySelectorAll('.navbar .nav-links a');
@@ -20,6 +22,8 @@ window.addEventListener('load', () => {
     window.location.hash = 'home';
     showPage('home');
   }
+
+  loadCountry();
 });
 
 const links = document.querySelectorAll('.navbar .nav-links a');
@@ -33,27 +37,28 @@ links.forEach(link => {
 });
 
 // Contact Validation
-function validation(event) {
+async function validation() {
   const username = document.getElementById('username').value.trim();
+  const userprofession = document.getElementById('userprofession').value.trim();
   const useremail = document.getElementById('useremail').value.trim();
   const usercountry = document.getElementById('selectCountry').value.trim();
-  const userphno = document.getElementById('userphno').value.trim();
+  const usermobileno = document.getElementById('usermobileno').value.trim();
   const usermessage = document.getElementById('usermessage').value.trim();
 
   const displayMsg = document.getElementById('formmsg');
 
-  let isValid = true;
-  let messageUser = '';
-
-  // Basic empty check
-  if (!username || !useremail || !usercountry || !userphno || !usermessage) {
+  // Basic validation
+  if (!username || !userprofession || !useremail || !usercountry || !usermobileno || !usermessage) {
     displayMsg.textContent = "Fill all the fields.";
     displayMsg.style.color = "red";
     return false;
   }
 
-  if (username.length < 3) {
-    messageUser += 'Name must be at least 3 characters long.\n';
+  let messageUser = '';
+  let isValid = true;
+
+  if (username.length < 5) {
+    messageUser += 'Name must be at least 5 characters long.\n';
     isValid = false;
   }
 
@@ -62,7 +67,7 @@ function validation(event) {
     isValid = false;
   }
 
-  if (!/^(\+?\d{1,3}[- ]?)?\d{10}$/.test(userphno)) {
+  if (!/^(\+?\d{1,3}[- ]?)?\d{10}$/.test(usermobileno)) {
     messageUser += 'Please enter a valid mobile number.\n';
     isValid = false;
   }
@@ -78,24 +83,67 @@ function validation(event) {
     return false;
   }
 
-  displayMsg.textContent = "Message Sent Successfully!";
-  displayMsg.style.color = "green";
-}
-// Country Code Fetch using first.org API
-const select = document.getElementById("selectCountry");
+  // Prepare data to match sheet headers exactly
+  const data = {
+    username: username,
+    userprofession: userprofession,
+    useremail: useremail,
+    country: usercountry,
+    mobile_number: usermobileno,
+    usermessage: usermessage,
+    Date: new Date().toLocaleString() // optional, if your sheet has a Date column
+  };
 
-fetch("https://api.first.org/data/v1/countries")
-  .then(response => response.json())
-  .then(result => {
-    const countries = Object.entries(result.data)
-      .map(([code, details]) => ({ code, name: details.country }))
-      .sort((a, b) => a.name.localeCompare(b.name));
-
-    countries.forEach(country => {
-      const option = document.createElement("option");
-      option.value = country.code;
-      option.textContent = country.name;
-      select.appendChild(option);
+  try {
+    const response = await fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
     });
-  })
-  .catch(error => console.error("Error fetching countries:", error));
+
+    const result = await response.json();
+
+    if (result.result === "success") {
+      displayMsg.textContent = "✅ Message sent successfully!";
+      displayMsg.style.color = "green";
+      document.querySelector('.contact-form').reset();
+    } else {
+      displayMsg.textContent = "❌ Error: " + result.error;
+      displayMsg.style.color = "red";
+    }
+  } catch (err) {
+    console.error(err);
+    displayMsg.textContent = "❌ Network error. Try again!";
+    displayMsg.style.color = "red";
+  }
+}
+
+
+const sendBtn = document.getElementById('send-btn');
+sendBtn.addEventListener('click', validation);
+
+const resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', () => {
+  document.getElementById('formmsg').innerText = '';
+});
+
+// Country Code Fetch using first.org API
+function loadCountry() {
+  const select = document.getElementById("selectCountry");
+
+  fetch("https://api.first.org/data/v1/countries")
+    .then(response => response.json())
+    .then(result => {
+      const countries = Object.entries(result.data)
+        .map(([code, details]) => ({ code, name: details.country }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country.code;
+        option.textContent = country.name;
+        select.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching countries:", error));
+}

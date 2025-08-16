@@ -12,7 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <script src="./index.js" defer></script>
+    <script type="module" src="./index.js"></script>
+
 </head>
 
 <body>
@@ -20,14 +21,14 @@
         <div class="profile">
             <img src="" class="profile-pic" />
             <h2>Pardha Saradhi</h2>
-            <h3>Web Developer</h3>
+            <h3 id="skill-text">Web Developer</h3>
             <button type="button" class="resume-btn" onclick="window.location.href ='./resume.html'">Resume</button>
         </div>
         <address>
             <div class="contact-item">
-                <a href="mailto:pardhasaradhi@gmail.com" target="_blank"><i class='bx bxl-gmail'></i>
+                <p class="mylocation"><i class='bx bx-map'></i><span>India, Andhra Pradesh</span></p>
+                <a href="mailto:pardhasaradhi.portfolio@gmail.com" target="_blank"><i class='bx bxl-gmail'></i>
                     <span>pardhasaradhi@gmail.com</span></a>
-                <a href="tel:+91XXXXXXXXXX"><i class='bx bx-phone'></i> <span>+91XXXXXXXXXX</span></a>
             </div>
             <div class="social-media">
                 <a href="https://www.linkedin.com/in/pardhasaradhipeetha" target="_blank"><i
@@ -122,26 +123,27 @@
                 </p>
             </div>
 
-            <form action="#message-url" class="contact-form">
+            <form action="https://script.google.com/macros/s/AKfycbzy5UdIB1w4C5KlN3dFqGVb59yw4GFu9X4LuwcXRB-ThH-4ZZ7XM0lBHQTEkVWxGvje/exec" class="contact-form">
                 <div class="container">
                     <div class="inputs">
-                        <p><i class='bx bxs-user'></i> <input type="text" placeholder="Username" id="username" /></p>
+                        <p><i class='bx bxs-user'></i> <input type="text" placeholder="Name" id="username" /></p>
+                        <p><i class='bx bxs-id-card' ></i> <input type="text" placeholder="Profession" id="userprofession" /></p>
                         <p><i class='bx bxs-envelope'></i><input type="email" placeholder="Email" id="useremail"></p>
                         <p><i class='bx bxs-map'></i>
                             <select id="selectCountry">
                                 <option value="">Select a Country</option>
                             </select>
                         </p>
-                        <p><i class='bx bxs-phone'></i><input type="text" placeholder="Mobile Number" id="userphno"></p>
+                        <p><i class='bx bxs-phone'></i><input type="text" placeholder="Mobile Number" id="usermobileno"></p>
                     </div>
                     <textarea placeholder="Your message..." id="usermessage"></textarea>
                 </div>
                 <div>
-                <button type="button" id="send-btn" onclick='validation()'>Send</button>
-                <button type="reset" id="reset-btn">Reset</button>
+                    <button type="button" id="send-btn">Send</button>
+                    <button type="reset" id="reset-btn">Reset</button>
                 </div>
-                <p id="formmsg"></p>
             </form>
+            <p id="formmsg"></p>
 
             <footer>
                 <p class="conditions">
