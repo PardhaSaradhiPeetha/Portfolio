@@ -13,8 +13,13 @@ function showPage(targetId) {
 
 window.addEventListener('load', () => {
   document.getElementById('current-year').textContent = new Date().getFullYear();
-  showPage('home');
-  window.location.hash = 'home';
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    showPage(hash);
+  } else {
+    window.location.hash = 'home';
+    showPage('home');
+  }
 });
 
 const links = document.querySelectorAll('.navbar .nav-links a');
